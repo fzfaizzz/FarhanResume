@@ -1,412 +1,512 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Farhan Akhtar Hamza - Resume</title>
-    <style>
-      /* --- CSS Variables & Reset --- */
-      :root {
-        --header-bg-color: #1a2f45;
-        --left-col-bg-color: #eef4f9;
-        --section-title-color: #1a2f45;
-        --text-color: #333;
-        --white: #ffffff;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farhan Akhtar Hamza - Resume</title>
+  <style>
+    /* --- CSS Variables & Reset --- */
+    :root {
+      --header-bg-color: #1a2f45;
+      --left-col-bg-color: #eef4f9;
+      --section-title-color: #1a2f45;
+      --text-color: #333;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.4;
+      color: var(--text-color);
+      background-color: #f4f4f4;
+    }
+
+    /* --- Main Resume Container (A4 Size) --- */
+    .resume-container {
+      width: 210mm;
+      margin: 0 auto;
+      background-color: var(--white);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* --- HEADER SECTION --- */
+    header {
+      background-color: var(--header-bg-color);
+      color: var(--white);
+      padding: 18px 30px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    header .role {
+      font-size: 14px;
+      font-weight: 400;
+      opacity: 0.9;
+      margin-bottom: 0;
+    }
+
+    /* --- TWO COLUMN LAYOUT --- */
+    .content-wrapper {
+      display: flex;
+    }
+
+    /* Left Column Styling */
+    .left-column {
+      background-color: var(--left-col-bg-color);
+      width: 33%;
+      padding: 18px 16px;
+      border-right: 1px solid #e0e0e0;
+    }
+
+    /* Right Column Styling */
+    .right-column {
+      width: 67%;
+      padding: 18px 22px;
+    }
+
+    /* --- TYPOGRAPHY & SECTIONS --- */
+    h2 {
+      color: var(--section-title-color);
+      font-size: 14px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+
+    p {
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    /* --- LEFT COLUMN SPECIFICS --- */
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      word-break: break-all;
+    }
+
+    .contact-list a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-list a:hover {
+      color: #2980b9;
+      text-decoration: underline;
+    }
+
+    .contact-icon {
+      margin-right: 8px;
+      color: var(--section-title-color);
+      font-size: 13px;
+      width: 16px;
+      text-align: center;
+    }
+
+    .skills-section li {
+      margin-bottom: 6px;
+    }
+
+    .skill-label {
+      font-weight: 700;
+      display: block;
+      color: var(--section-title-color);
+      font-size: 12px;
+    }
+
+    .education-item {
+      margin-bottom: 10px;
+    }
+
+    .degree {
+      font-weight: 700;
+      font-size: 12px;
+      color: #222;
+    }
+
+    .university {
+      font-style: italic;
+      color: #555;
+      font-size: 11px;
+    }
+
+    /* --- RIGHT COLUMN SPECIFICS --- */
+    .summary-text {
+      line-height: 1.45;
+      font-size: 11.5px;
+    }
+
+    .project-item {
+      margin-bottom: 12px;
+    }
+
+    .project-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Link Styling for Projects */
+    .project-link {
+      text-decoration: none;
+      color: inherit;
+      display: inline-flex;
+      align-items: center;
+      transition: color 0.2s;
+    }
+
+    .project-link:hover {
+      color: #2980b9;
+      text-decoration: underline;
+    }
+
+    .link-icon {
+      font-size: 10px;
+      margin-left: 6px;
+      opacity: 0.7;
+    }
+
+    .tech-stack {
+      font-style: italic;
+      font-size: 11px;
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    .project-bullets {
+      list-style-type: disc;
+      padding-left: 16px;
+    }
+
+    .project-bullets li {
+      margin-bottom: 2px;
+      font-size: 11.5px;
+    }
+
+    /* --- EXPERIENCE SECTION STYLING --- */
+    .experience-item {
+      margin-bottom: 12px;
+    }
+
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+
+    .job-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #222;
+    }
+
+    .job-duration {
+      font-size: 11px;
+      font-weight: 600;
+      color: #555;
+    }
+
+    .company-name {
+      font-style: italic;
+      font-size: 11px;
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    /* --- A4 Page Sizing --- */
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    /* --- PRINT MEDIA QUERY --- */
+    @media print {
+      body {
+        background-color: white;
+        margin: 0;
+        padding: 0;
+      }
+
+      .resume-container {
+        box-shadow: none;
+        margin: 0;
+        width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        overflow: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
+
+      .link-icon {
+        display: none;
       }
 
       * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
+    }
 
-      body {
-        font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        line-height: 1.5;
-        color: var(--text-color);
-        background-color: #f4f4f4;
-      }
+    /* --- Section spacing for left column --- */
+    .left-column section+section {
+      margin-top: 16px !important;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
 
-      /* --- Main Resume Container --- */
-      .resume-container {
-        max-width: 900px;
-        margin: 20px auto;
-        background-color: var(--white);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      }
+<body>
+  <div class="resume-container">
+    <header>
+      <h1>FARHAN AKHTAR HAMZA</h1>
+      <div class="role">
+        Front-End Developer | React.js & AI-Vibe Coder
+      </div>
+    </header>
 
-      /* --- HEADER SECTION --- */
-      header {
-        background-color: var(--header-bg-color);
-        color: var(--white);
-        padding: 30px 40px;
-        text-align: center;
-      }
+    <div class="content-wrapper">
+      <aside class="left-column">
+        <section>
+          <h2>CONTACT INFO</h2>
+          <ul class="contact-list">
+            <li>
+              <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+              Nalasopara, Mumbai, India
+            </li>
+            <li>
+              <span class="contact-icon"><i class="fas fa-phone-alt"></i></span>
+              <a href="tel:9580345032">9580345032</a>
+            </li>
+            <li>
+              <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+              <a href="mailto:akhtarfarhan658@gmail.com">akhtarfarhan658@gmail.com</a>
+            </li>
+            <li>
+              <span class="contact-icon"><i class="fab fa-linkedin"></i></span>
+              <a href="https://www.linkedin.com/in/farhan-akhtar-4b0710322/"
+                target="_blank">linkedin.com/in/farhan-akhtar</a>
+            </li>
+          </ul>
+        </section>
 
-      header h1 {
-        font-size: 36px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        margin-bottom: 5px;
-      }
+        <section style="margin-top: 30px">
+          <h2>TECHNICAL SKILLS</h2>
+          <ul class="skills-section">
+            <li>
+              <span class="skill-label">Core:</span> HTML5, CSS3, JavaScript
+              (ES6+)
+            </li>
+            <li>
+              <span class="skill-label">Frameworks:</span> React.js, Next.js,
+              Tailwind CSS
+            </li>
+            <li>
+              <span class="skill-label">AI Tools:</span> ChatGPT, Gemini Pro,
+              AI-Assisted Development
+            </li>
+            <li>
+              <span class="skill-label">Tools:</span> Git, GitHub, Postman, VS
+              Code
+            </li>
+            <li>
+              <span class="skill-label">Animations/3D:</span> GSAP, Three.js
+            </li>
+          </ul>
+        </section>
 
-      header .role {
-        font-size: 18px;
-        font-weight: 400;
-        opacity: 0.9;
-        margin-bottom: 0;
-      }
+        <section style="margin-top: 30px">
+          <h2>EDUCATION</h2>
+          <div class="education-item">
+            <div class="degree">B.Tech in Computer Science</div>
+            <div class="university">Dr. Preeti Global University</div>
+            <div>(Pursuing)</div>
+          </div>
+          <div class="education-item" style="margin-top: 15px">
+            <div class="degree">Diploma in Computer Science</div>
+            <div class="university">Aisin International University</div>
+            <div>(Completed)</div>
+          </div>
+        </section>
 
-      /* --- TWO COLUMN LAYOUT --- */
-      .content-wrapper {
-        display: flex;
-        min-height: 800px;
-      }
+        <section style="margin-top: 14px">
+          <h2>SOFT SKILLS</h2>
+          <ul class="skills-section">
+            <li>
+              <span class="skill-label">Problem Solving:</span> Finding and fixing bugs quickly
+            </li>
+            <li>
+              <span class="skill-label">Teamwork:</span> Working well with others & using Git
+            </li>
+            <li>
+              <span class="skill-label">Quick Learner:</span> Adapting fast to new technologies
+            </li>
+          </ul>
+        </section>
+      </aside>
 
-      /* Left Column Styling */
-      .left-column {
-        background-color: var(--left-col-bg-color);
-        width: 35%;
-        padding: 30px 25px;
-        border-right: 1px solid #e0e0e0;
-      }
+      <main class="right-column">
+        <section>
+          <h2>PROFILE SUMMARY</h2>
+          <p class="summary-text">
+            I am a Front-End Developer with a Diploma in Computer Science and
+            I am currently pursuing my B.Tech. I love building clean, responsive
+            websites using React.js, Next.js, and GSAP. I also use modern AI
+            tools to build full-stack websites, Android apps, mobile games,
+            and smart AI agents. I am looking for a creative team where I can
+            contribute, learn new things, and build awesome projects.
+          </p>
+        </section>
 
-      /* Right Column Styling */
-      .right-column {
-        width: 65%;
-        padding: 30px 35px;
-      }
+        <section style="margin-top: 14px">
+          <h2>WORK EXPERIENCE <span
+              style="font-size: 11px; font-weight: 600; text-transform: none; float: right; color: #555; margin-top: 2px;">1.5+
+              Years of Experience</span></h2>
 
-      /* --- TYPOGRAPHY & SECTIONS --- */
-      h2 {
-        color: var(--section-title-color);
-        font-size: 18px;
-        text-transform: uppercase;
-        font-weight: 700;
-        margin-bottom: 15px;
-        letter-spacing: 0.5px;
-        position: relative;
-      }
-
-      p {
-        font-size: 14px;
-        margin-bottom: 10px;
-      }
-
-      ul {
-        list-style-type: none;
-      }
-
-      li {
-        font-size: 14px;
-        margin-bottom: 6px;
-      }
-
-      /* --- LEFT COLUMN SPECIFICS --- */
-      .contact-list li {
-        display: flex;
-        align-items: center;
-        margin-bottom: 12px;
-        word-break: break-all;
-      }
-      .contact-icon {
-        margin-right: 10px;
-        color: var(--section-title-color);
-        font-size: 16px;
-        width: 20px;
-        text-align: center;
-      }
-
-      .skills-section li {
-        margin-bottom: 12px;
-      }
-      .skill-label {
-        font-weight: 700;
-        display: block;
-        color: var(--section-title-color);
-        font-size: 15px;
-      }
-
-      .education-item {
-        margin-bottom: 15px;
-      }
-      .degree {
-        font-weight: 700;
-        font-size: 15px;
-        color: #222;
-      }
-      .university {
-        font-style: italic;
-        color: #555;
-      }
-
-      /* --- RIGHT COLUMN SPECIFICS --- */
-      .summary-text {
-        line-height: 1.6;
-      }
-
-      .project-item {
-        margin-bottom: 25px;
-      }
-      .project-title {
-        font-size: 16px;
-        font-weight: 700;
-        color: #222;
-        margin-bottom: 5px;
-        display: flex;
-        align-items: center;
-      }
-
-      /* Link Styling for Projects */
-      .project-link {
-        text-decoration: none;
-        color: inherit;
-        display: inline-flex;
-        align-items: center;
-        transition: color 0.2s;
-      }
-      .project-link:hover {
-        color: #2980b9; /* Change color on hover */
-        text-decoration: underline;
-      }
-      .link-icon {
-        font-size: 12px;
-        margin-left: 8px;
-        opacity: 0.7;
-      }
-
-      .tech-stack {
-        font-style: italic;
-        font-size: 13px;
-        color: #666;
-        margin-bottom: 8px;
-      }
-      .project-bullets {
-        list-style-type: disc;
-        padding-left: 20px;
-      }
-      .project-bullets li {
-        margin-bottom: 5px;
-      }
-
-      /* --- PRINT MEDIA QUERY --- */
-      @media print {
-        body {
-          background-color: white;
-        }
-        .resume-container {
-          box-shadow: none;
-          margin: 0;
-          width: 100%;
-          max-width: 100%;
-        }
-        a {
-          text-decoration: none;
-          color: black;
-        } /* Removes blue link color in print */
-        .link-icon {
-          display: none;
-        } /* Hides icon in print */
-        * {
-          -webkit-print-color-adjust: exact !important;
-          print-color-adjust: exact !important;
-        }
-      }
-    </style>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-  </head>
-  <body>
-    <div class="resume-container">
-      <header>
-        <h1>FARHAN AKHTAR HAMZA</h1>
-        <div class="role">
-          Front-End Developer | React.js & AI-Vibe Coder
-        </div>
-      </header>
-
-      <div class="content-wrapper">
-        <aside class="left-column">
-          <section>
-            <h2>CONTACT INFO</h2>
-            <ul class="contact-list">
-              <li>
-                <span class="contact-icon"
-                  ><i class="fas fa-map-marker-alt"></i
-                ></span>
-                Nalasopara, Mumbai, India
-              </li>
-              <li>
-                <span class="contact-icon"
-                  ><i class="fas fa-phone-alt"></i
-                ></span>
-                9580345032
-              </li>
-              <li>
-                <span class="contact-icon"
-                  ><i class="fas fa-envelope"></i
-                ></span>
-                akhtarfarhan658@gmail.com
-              </li>
-            </ul>
-          </section>
-
-          <section style="margin-top: 30px">
-            <h2>TECHNICAL SKILLS</h2>
-            <ul class="skills-section">
-              <li>
-                <span class="skill-label">Core:</span> HTML5, CSS3, JavaScript
-                (ES6+)
-              </li>
-              <li>
-                <span class="skill-label">Frameworks:</span> React.js, Next.js,
-                Tailwind CSS
-              </li>
-              <li>
-                <span class="skill-label">AI Tools:</span> ChatGPT, Gemini Pro,
-                AI-Assisted Development
-              </li>
-              <li>
-                <span class="skill-label">Tools:</span> Git, GitHub, Postman, VS
-                Code
-              </li>
-              <li>
-                <span class="skill-label">Animations/3D:</span> GSAP, Three.js
-              </li>
-            </ul>
-          </section>
-
-          <section style="margin-top: 30px">
-            <h2>EDUCATION</h2>
-            <div class="education-item">
-              <div class="degree">B.Tech in Computer Science</div>
-              <div class="university">Dr. Preeti Global University</div>
-              <div>(Pursuing)</div>
+          <div class="experience-item">
+            <div class="experience-header">
+              <span class="job-title">Full-Stack Developer (Freelance)</span>
+              <span class="job-duration">Jan 2026 - Present</span>
             </div>
-            <div class="education-item" style="margin-top: 15px">
-              <div class="degree">Diploma in Computer Science</div>
-              <div class="university">Aisin International University</div>
-              <div>(Completed)</div>
-            </div>
-          </section>
-        </aside>
-
-        <main class="right-column">
-          <section>
-            <h2>PROFILE SUMMARY</h2>
-            <p class="summary-text">
-              Motivated Front-End Developer with a Diploma in Computer Science
-              and currently pursuing B.Tech. Skilled in building responsive and
-              user-friendly web applications using React.js, Next.js, and
-              Tailwind CSS. I also use AI tools to improve development speed, UI
-              ideas, and problem-solving. Experienced in creating smooth and
-              interactive animations with GSAP. Eager to work with a creative
-              team to build smart, high-quality web solutions.
-            </p>
-          </section>
-
-          <section style="margin-top: 30px">
-            <h2>PROJECTS</h2>
-
-            <div class="project-item">
-              <div class="project-title">
-                <a
-                  href="https://farhanportfolio27.netlify.app/"
-                  target="_blank"
-                  class="project-link"
-                >
-                  1. Personal Portfolio Website
-                  <i class="fas fa-external-link-alt link-icon"></i>
-                </a>
-              </div>
-              <div class="tech-stack">
-                Tech Stack: React.js, Tailwind CSS, GSAP
-              </div>
-              <ul class="project-bullets">
-                <li>
-                  Designed and developed a fully responsive personal portfolio
-                  with interactive animations to showcase technical skills and
-                  projects.
-                </li>
-                <li>
-                  Implemented smooth scrolling and optimized performance for
-                  faster load times.
-                </li>
-              </ul>
-            </div>
-
-            <div class="project-item">
-              <div class="project-title">
-                <a
-                  href="https://cyberpunk27.netlify.app/"
-                  target="_blank"
-                  class="project-link"
-                >
-                  2. Cyberpunk UI Experience
-                  <i class="fas fa-external-link-alt link-icon"></i>
-                </a>
-              </div>
-              <div class="tech-stack">
-                Tech Stack: HTML, CSS, JavaScript, Three.js, GSAP
-              </div>
-              <ul class="project-bullets">
-                <li>
-                  Developed a futuristic, immersive User Interface inspired by
-                  Cyberpunk aesthetics.
-                </li>
-                <li>
-                  Utilized advanced GSAP animations and Three.js elements for an
-                  immersive 3D experience.
-                </li>
-              </ul>
-            </div>
-
-            <div class="project-item">
-              <div class="project-title">
-                <a
-                  href="https://itteamwork.netlify.app/"
-                  target="_blank"
-                  class="project-link"
-                >
-                  3. IT Team Collaboration Layout
-                  <i class="fas fa-external-link-alt link-icon"></i>
-                </a>
-              </div>
-              <div class="tech-stack">Tech Stack: HTML, CSS, JavaScript</div>
-              <ul class="project-bullets">
-                <li>
-                  Built a structured layout focusing on semantic HTML and CSS
-                  Grid/Flexbox for a team platform concept.
-                </li>
-                <li>
-                  Ensured cross-browser compatibility and mobile responsiveness.
-                </li>
-              </ul>
-            </div>
-          </section>
-
-          <section style="margin-top: 30px">
-            <h2>SOFT SKILLS</h2>
+            <div class="company-name">Self-Employed / Remote</div>
             <ul class="project-bullets">
               <li>
-                <strong>Problem Solving:</strong> Strong ability to debug code
-                and find efficient solutions.
+                Built responsive websites, full-stack web apps, Android apps, and mobile games using AI tools.
               </li>
               <li>
-                <strong>Team Collaboration:</strong> Experienced in working with
-                team structures and version control.
-              </li>
-              <li>
-                <strong>Adaptability:</strong> Quick learner with a passion for
-                adopting new technologies like Next.js.
+                Created smart AI agents and smooth web animations using GSAP and Tailwind CSS.
               </li>
             </ul>
-          </section>
-        </main>
-      </div>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-header">
+              <span class="job-title">Frontend Developer</span>
+              <span class="job-duration">Dec 2024 - Dec 2025</span>
+            </div>
+            <div class="company-name">Om Sai Enterprises (Mumbai, India)</div>
+            <ul class="project-bullets">
+              <li>
+                Built and maintained their main corporate web portal and React-based certificate verification systems.
+              </li>
+              <li>
+                Designed responsive user interfaces and optimized website speed for a better user experience.
+              </li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-header">
+              <span class="job-title">Web Developer Intern</span>
+              <span class="job-duration">Aug 2024 - Dec 2024</span>
+            </div>
+            <div class="company-name">IT Teamwork (Mumbai, India)</div>
+            <ul class="project-bullets">
+              <li>
+                Developed responsive web layouts and UI components using HTML5, CSS3, and JavaScript.
+              </li>
+              <li>
+                Collaborated with senior developers using Git/GitHub for version control and code reviews.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section style="margin-top: 14px">
+          <h2>PROJECTS</h2>
+
+          <div class="project-item">
+            <div class="project-title">
+              <a href="https://farhanportfolio27.netlify.app/" target="_blank" class="project-link">
+                1. Personal Portfolio Website
+                <i class="fas fa-external-link-alt link-icon"></i>
+              </a>
+            </div>
+            <div class="tech-stack">Tech Stack: React.js, Tailwind CSS, GSAP</div>
+            <ul class="project-bullets">
+              <li>
+                Built a responsive portfolio website with smooth GSAP animations to showcase my work.
+              </li>
+              <li>
+                Optimized assets and page speed for extremely fast loading times.
+              </li>
+            </ul>
+          </div>
+
+          <div class="project-item">
+            <div class="project-title">
+              <a href="https://jyotistationers.netlify.app/" target="_blank" class="project-link">
+                2. Jyoti Stationers - Full-Stack E-Commerce Store
+                <i class="fas fa-external-link-alt link-icon"></i>
+              </a>
+            </div>
+            <div class="tech-stack">Tech Stack: React.js, Tailwind CSS, Node.js, Express, AI Tools</div>
+            <ul class="project-bullets">
+              <li>
+                Developed a full-stack online store with database integration using AI-assisted tools.
+              </li>
+              <li>
+                Designed a modern, mobile-friendly interface for browsing stationery items easily.
+              </li>
+            </ul>
+          </div>
+
+          <div class="project-item">
+            <div class="project-title">
+              <a href="https://itteamwork.netlify.app/" target="_blank" class="project-link">
+                3. IT Team Collaboration Layout
+                <i class="fas fa-external-link-alt link-icon"></i>
+              </a>
+            </div>
+            <div class="tech-stack">Tech Stack: HTML, CSS, JavaScript</div>
+            <ul class="project-bullets">
+              <li>
+                Designed a clean, structured layout for a team collaboration platform from scratch.
+              </li>
+              <li>
+                Used HTML and CSS (Flexbox/Grid) to ensure perfect responsiveness on mobile and desktop.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+      </main>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
